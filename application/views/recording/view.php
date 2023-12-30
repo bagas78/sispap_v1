@@ -31,6 +31,19 @@ $('form').attr('action', '<?=base_url('recording/update/'.@$data['recording_id']
 
 	<?php endif ?>
 
+	//afkir 
+	<?php if($v['recording_barang_kategori'] == 'afkir'): ?>
+
+		<?php if($a - 0): ?>
+
+			clone('afkir');
+
+		<?php endif ?>
+
+	<?php $a++ ?>
+
+	<?php endif ?>
+
 	//telur
 	<?php if($v['recording_barang_kategori'] == 'telur'): ?>
 
@@ -73,6 +86,7 @@ $('form').attr('action', '<?=base_url('recording/update/'.@$data['recording_id']
 <?php endforeach ?>
 
 //insert data
+<?php $i_d = 0; ?>
 <?php $i_a = 0; ?>
 <?php $i_t = 0; ?>
 <?php $i_p = 0; ?>
@@ -80,15 +94,26 @@ $('form').attr('action', '<?=base_url('recording/update/'.@$data['recording_id']
 <?php foreach(@$barang_data as  $key => $v): ?>
 
 	//ayam
+	<?php if($v['barang_kategori'] == 5): ?>
+		
+		$('.ayam:eq(<?=$i_d?>)').val('<?=$v['recording_barang_barang']?>').change();
+		$('.ayam_berat:eq(<?=$i_d?>)').val('<?=$v['recording_barang_berat']?>');
+		$('.ayam_gejala:eq(<?=$i_d?>)').val('<?=$v['recording_barang_gejala']?>');
+		$('.ayam_obat:eq(<?=$i_d?>)').val('<?=$v['recording_barang_obat']?>').change();
+
+		<?php $i_d++; ?>
+	<?php endif ?>
+
+	//afkir
 	<?php if($v['barang_kategori'] == 2): ?>
 		
-		$('.ayam:eq(<?=$i_a?>)').val('<?=$v['recording_barang_barang']?>').change();
-		$('.ayam_jumlah:eq(<?=$i_a?>)').val('<?=$v['recording_barang_jumlah']?>');
+		$('.afkir:eq(<?=$i_a?>)').val('<?=$v['recording_barang_barang']?>').change();
+		$('.afkir_jumlah:eq(<?=$i_a?>)').val('<?=$v['recording_barang_jumlah']?>');
 
 		<?php $i_a++; ?>
 	<?php endif ?>
 
-	//ayam
+	//afkir
 	<?php if($v['barang_kategori'] == 1): ?>
 		
 		$('.telur:eq(<?=$i_t?>)').val('<?=$v['recording_barang_barang']?>').change();

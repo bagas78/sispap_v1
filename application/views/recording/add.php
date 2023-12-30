@@ -77,9 +77,35 @@
 
           <div class="clearfix"></div><br/>
 
-          <!-- ayam -->
+          <!-- afkir / mati -->
 
-          <div class="col-md-12 col-om ayam_sub">
+          <div class="col-md-12 col-om afkir_sub">
+
+            <h4 align="center" class="tit"><b>-- AYAM --</b></h4>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th width="500">Ayam</th>
+                  <th width="500">Berat Ayam</th>
+                  <th width="500">Gejala Klinis</th>
+                  <th width="500">Pemberian Obat</th>
+                  <th width="500" hidden>Kategori</th>
+                  <th width="1">
+                    <button type="button" onclick="clone('ayam')" class="add btn btn-success btn-sm"><i class="fa fa-plus"></i></button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="paste_ayam"></tbody>
+            </table>
+
+          </div>
+
+          <div class="clearfix"></div><br/>
+
+          <!-- afkir / mati -->
+
+          <div class="col-md-12 col-om afkir_sub">
 
             <h4 align="center" class="tit"><b>-- AFKIR / MATI --</b></h4>
 
@@ -90,11 +116,11 @@
                   <th width="500">Jumlah Ayam</th>
                   <th width="500" hidden>Kategori</th>
                   <th width="1">
-                    <button type="button" onclick="clone('ayam')" class="add btn btn-success btn-sm"><i class="fa fa-plus"></i></button>
+                    <button type="button" onclick="clone('afkir')" class="add btn btn-success btn-sm"><i class="fa fa-plus"></i></button>
                   </th>
                 </tr>
               </thead>
-              <tbody id="paste_ayam"></tbody>
+              <tbody id="paste_afkir"></tbody>
             </table>
 
           </div>
@@ -201,12 +227,48 @@
     </td>
     <td>
       <div class="input-group">
-        <input id="ayam_jumlah" type="number" name="ayam_jumlah[]" class="form-control ayam_jumlah" required value="0" min="0">
-        <span class="input-group-addon" id="ayam_satuan"></span>
+        <input id="ayam_berat" type="number" name="ayam_berat[]" class="form-control ayam_berat" required value="0" min="0">
+        <span class="input-group-addon">Kg
+      </div>
+    </td>
+    <td>
+       <input id="ayam_gejala" type="text" name="ayam_gejala[]" class="form-control ayam_gejala">
+    </td>
+    
+    <td>
+      <select id="ayam_obat" class="form-control ayam_obat" required name="ayam_obat[]">
+        <option value="" hidden>-- Pilih --</option>
+        <?php foreach ($obat_data as $value): ?>
+          <option value="<?=@$value['barang_id']?>"><?=@$value['barang_nama']?></option>
+        <?php endforeach ?>
+      </select>
+    </td>
+
+    <td hidden>
+       <input value="ayam" type="text" name="ayam_kategori[]" class="form-control ayam_kategori">
+    </td>
+    <td>
+      <button type="button" class="remove btn btn-danger btn-sm" onclick="$(this).closest('tr').remove()"><i class="fa fa-minus"></i></button>
+    </td>
+  </tr>
+
+  <tr id="copy_afkir" hidden> 
+    <td>
+      <select id="afkir" class="form-control afkir" required name="afkir[]">
+        <option value="" hidden>-- Pilih --</option>
+        <?php foreach ($afkir_data as $value): ?>
+          <option value="<?=@$value['barang_id']?>"><?=@$value['barang_nama']?></option>
+        <?php endforeach ?>
+      </select>
+    </td>
+    <td>
+      <div class="input-group">
+        <input id="afkir_jumlah" type="number" name="afkir_jumlah[]" class="form-control afkir_jumlah" required value="0" min="0">
+        <span class="input-group-addon" id="afkir_satuan"></span>
       </div>
     </td>
     <td hidden>
-       <input value="ayam" type="text" name="ayam_kategori[]" class="form-control ayam_kategori">
+       <input value="afkir" type="text" name="afkir_kategori[]" class="form-control afkir_kategori">
     </td>
     <td>
       <button type="button" class="remove btn btn-danger btn-sm" onclick="$(this).closest('tr').remove()"><i class="fa fa-minus"></i></button>
@@ -299,7 +361,7 @@ $('form').submit( function(e){
     
     if ($('#populasi').val() == 0) {
 
-      alert('Jumlah populasi 0 silahkan "tambah ayam" di menu "kode kandang" sub menu "kandang"');
+      alert('Jumlah populasi 0 silahkan "tambah afkir" di menu "kode kandang" sub menu "kandang"');
     }else{
 
       $(this)[0].submit();
@@ -425,8 +487,8 @@ $(document).on('change', '#premix', function() {
 
 });
 
-//satuan ayam dan telur
-$(document).on('change', '#ayam, #telur', function() {
+//satuan afkir dan telur
+$(document).on('change', '#afkir, #telur', function() {
 
   var id = $(this).val();
   var nama = $(this).prop('name').replace("[]", "");  
@@ -483,20 +545,22 @@ function clone(target){
   //reset value
   $('#copy_'+target).find('select').val('').change();
   $('#copy_'+target).find('input[type="number"]').val(0);
-  $('#copy_'+target).find('span').text('');
+  $('#copy_'+target).find('#'+target+'_satuan').text('');
+
+  $('#copy_'+target).find('#'+target+'_gejala').val('');
 } 
 
 //cek stok populasi
-$(document).on('keyup | change', '.ayam_jumlah', function() {
+$(document).on('keyup | change', '.afkir_jumlah', function() {
 
-  var ayam = 0;
-  $.each($('.ayam_jumlah'), function(index, val) {
+  var afkir = 0;
+  $.each($('.afkir_jumlah'), function(index, val) {
      
-     ayam += parseInt($(this).val());
+     afkir += parseInt($(this).val());
 
   });
 
-  if (ayam > parseInt($('#populasi').val())) {
+  if (afkir > parseInt($('#populasi').val())) {
 
     warning('Jumlah melebihi populasi');
 

@@ -1,7 +1,7 @@
 <?php
 class Recording extends CI_Controller{
 
-	function __construct(){
+	function __construct(){ 
 		parent::__construct();
 		$this->load->model('m_recording');
 	}  
@@ -52,8 +52,14 @@ class Recording extends CI_Controller{
 		//telur
 		$data['telur_data'] = $this->query_builder->view("SELECT * FROM t_barang WHERE barang_hapus = 0 AND barang_kategori = 1");
 
+		//afkir
+		$data['afkir_data'] = $this->query_builder->view("SELECT * FROM t_barang WHERE barang_hapus = 0 AND barang_kategori = 2");
+
 		//ayam
-		$data['ayam_data'] = $this->query_builder->view("SELECT * FROM t_barang WHERE barang_hapus = 0 AND barang_kategori = 2");
+		$data['ayam_data'] = $this->query_builder->view("SELECT * FROM t_barang WHERE barang_hapus = 0 AND barang_kategori = 5");
+
+		//obat
+		$data['obat_data'] = $this->query_builder->view("SELECT * FROM t_barang WHERE barang_hapus = 0 AND barang_kategori = 4");
 
 		$data['title'] = 'Recording Harian';
 
@@ -112,7 +118,19 @@ class Recording extends CI_Controller{
 
 				for ($i = 0; $i < $ayam; ++$i) {
 				
-					$this->query_builder->add('t_recording_barang', ['recording_barang_nomor' => $nomor, 'recording_barang_barang' => $_POST['ayam'][$i], 'recording_barang_jumlah' => $_POST['ayam_jumlah'][$i], 'recording_barang_kategori' => $_POST['ayam_kategori'][$i]]);
+					$this->query_builder->add('t_recording_barang', ['recording_barang_nomor' => $nomor, 'recording_barang_barang' => $_POST['ayam'][$i], 'recording_barang_berat' => $_POST['ayam_berat'][$i], 'recording_barang_gejala' => $_POST['ayam_gejala'][$i], 'recording_barang_obat' => $_POST['ayam_obat'][$i], 'recording_barang_kategori' => $_POST['ayam_kategori'][$i]]);
+				}				
+			}
+
+
+			//save afkir
+			if (@$_POST['afkir']) {
+				
+				$afkir = count($_POST['afkir']);
+
+				for ($i = 0; $i < $afkir; ++$i) {
+				
+					$this->query_builder->add('t_recording_barang', ['recording_barang_nomor' => $nomor, 'recording_barang_barang' => $_POST['afkir'][$i], 'recording_barang_jumlah' => $_POST['afkir_jumlah'][$i], 'recording_barang_kategori' => $_POST['afkir_kategori'][$i]]);
 				}				
 			}
 
@@ -202,8 +220,14 @@ class Recording extends CI_Controller{
 		//telur
 		$data['telur_data'] = $this->query_builder->view("SELECT * FROM t_barang WHERE barang_hapus = 0 AND barang_kategori = 1");
 
+		//afkir
+		$data['afkir_data'] = $this->query_builder->view("SELECT * FROM t_barang WHERE barang_hapus = 0 AND barang_kategori = 2");
+
 		//ayam
-		$data['ayam_data'] = $this->query_builder->view("SELECT * FROM t_barang WHERE barang_hapus = 0 AND barang_kategori = 2");
+		$data['ayam_data'] = $this->query_builder->view("SELECT * FROM t_barang WHERE barang_hapus = 0 AND barang_kategori = 5");
+
+		//obat
+		$data['obat_data'] = $this->query_builder->view("SELECT * FROM t_barang WHERE barang_hapus = 0 AND barang_kategori = 4");
 
 		$data['title'] = 'Recording Harian';
 
@@ -232,8 +256,14 @@ class Recording extends CI_Controller{
 		//telur
 		$data['telur_data'] = $this->query_builder->view("SELECT * FROM t_barang WHERE barang_hapus = 0 AND barang_kategori = 1");
 
+		//afkir
+		$data['afkir_data'] = $this->query_builder->view("SELECT * FROM t_barang WHERE barang_hapus = 0 AND barang_kategori = 2");
+
 		//ayam
-		$data['ayam_data'] = $this->query_builder->view("SELECT * FROM t_barang WHERE barang_hapus = 0 AND barang_kategori = 2");
+		$data['ayam_data'] = $this->query_builder->view("SELECT * FROM t_barang WHERE barang_hapus = 0 AND barang_kategori = 5");
+
+		//obat
+		$data['obat_data'] = $this->query_builder->view("SELECT * FROM t_barang WHERE barang_hapus = 0 AND barang_kategori = 4");
 
 		$data['title'] = 'Recording Harian';
 
@@ -270,7 +300,19 @@ class Recording extends CI_Controller{
 
 				for ($i = 0; $i < $ayam; ++$i) {
 				
-					$this->query_builder->add('t_recording_barang', ['recording_barang_nomor' => $nomor, 'recording_barang_barang' => $_POST['ayam'][$i], 'recording_barang_jumlah' => $_POST['ayam_jumlah'][$i]]);
+					$this->query_builder->add('t_recording_barang', ['recording_barang_nomor' => $nomor, 'recording_barang_barang' => $_POST['ayam'][$i], 'recording_barang_berat' => $_POST['ayam_berat'][$i], 'recording_barang_gejala' => $_POST['ayam_gejala'][$i], 'recording_barang_obat' => $_POST['ayam_obat'][$i], 'recording_barang_kategori' => $_POST['ayam_kategori'][$i]]);
+				}				
+			}
+
+
+			//save afkir
+			if (@$_POST['afkir']) {
+				
+				$afkir = count($_POST['afkir']);
+
+				for ($i = 0; $i < $afkir; ++$i) {
+				
+					$this->query_builder->add('t_recording_barang', ['recording_barang_nomor' => $nomor, 'recording_barang_barang' => $_POST['afkir'][$i], 'recording_barang_jumlah' => $_POST['afkir_jumlah'][$i], 'recording_barang_kategori' => $_POST['afkir_kategori'][$i]]);
 				}				
 			}
 
@@ -282,7 +324,7 @@ class Recording extends CI_Controller{
 				
 				for ($i = 0; $i < $telur; ++$i) {
 				
-					$this->query_builder->add('t_recording_barang', ['recording_barang_nomor' => $nomor, 'recording_barang_barang' => $_POST['telur'][$i], 'recording_barang_jumlah' => $_POST['telur_jumlah'][$i]]);
+					$this->query_builder->add('t_recording_barang', ['recording_barang_nomor' => $nomor, 'recording_barang_barang' => $_POST['telur'][$i], 'recording_barang_jumlah' => $_POST['telur_jumlah'][$i], 'recording_barang_kategori' => $_POST['telur_kategori'][$i]]);
 				}	
 			}
 			
@@ -294,7 +336,7 @@ class Recording extends CI_Controller{
 				
 				for ($i = 0; $i < $pakan; ++$i) {
 				
-					$this->query_builder->add('t_recording_barang', ['recording_barang_nomor' => $nomor, 'recording_barang_barang' => $_POST['pakan'][$i], 'recording_barang_stok' => $_POST['pakan_stok'][$i], 'recording_barang_jumlah' => $_POST['pakan_jumlah'][$i]]);
+					$this->query_builder->add('t_recording_barang', ['recording_barang_nomor' => $nomor, 'recording_barang_barang' => $_POST['pakan'][$i], 'recording_barang_stok' => $_POST['pakan_stok'][$i], 'recording_barang_jumlah' => $_POST['pakan_jumlah'][$i], 'recording_barang_kategori' => $_POST['pakan_kategori'][$i]]);
 				}	
 			}
 			
@@ -306,7 +348,7 @@ class Recording extends CI_Controller{
 				
 				for ($i = 0; $i < $premix; ++$i) {
 				
-					$this->query_builder->add('t_recording_barang', ['recording_barang_nomor' => $nomor, 'recording_barang_barang' => $_POST['premix'][$i], 'recording_barang_stok' => $_POST['premix_stok'][$i], 'recording_barang_jumlah' => $_POST['premix_jumlah'][$i]]);
+					$this->query_builder->add('t_recording_barang', ['recording_barang_nomor' => $nomor, 'recording_barang_barang' => $_POST['premix'][$i], 'recording_barang_stok' => $_POST['premix_stok'][$i], 'recording_barang_jumlah' => $_POST['premix_jumlah'][$i], 'recording_barang_kategori' => $_POST['premix_kategori'][$i]]);
 				}	
 			}
 
@@ -331,7 +373,7 @@ class Recording extends CI_Controller{
 			$a = date_format(date_create($tgl[0]), 'Y-m-d');
 			$b = date_format(date_create($tgl[1]), 'Y-m-d');
 			
-			$get = $this->query_builder->view("SELECT kandang_nama AS kandang, barang_kategori AS kategori, SUM(IF(barang_kategori='2', recording_barang_jumlah, 0)) AS ayam, SUM(IF(barang_kategori='1', recording_barang_jumlah, 0)) AS telur, SUM(IF(barang_kategori='3', recording_barang_jumlah, 0)) AS pakan, SUM(IF(barang_kategori='4', recording_barang_jumlah, 0)) AS obat, recording_tanggal AS tanggal FROM t_recording AS a JOIN t_recording_barang AS b ON a.recording_nomor = b.recording_barang_nomor LEFT JOIN t_barang AS c ON b.recording_barang_barang = c.barang_id LEFT JOIN t_kandang AS d ON a.recording_kandang = d.kandang_id WHERE a.recording_hapus = 0 AND a.recording_kandang = '$kandang' AND a.recording_tanggal BETWEEN '$a' AND '$b' GROUP BY a.recording_tanggal");
+			$get = $this->query_builder->view("SELECT kandang_nama AS kandang, barang_kategori AS kategori, SUM(IF(barang_kategori='2', recording_barang_jumlah, 0)) AS afkir, SUM(IF(barang_kategori='1', recording_barang_jumlah, 0)) AS telur, SUM(IF(barang_kategori='3', recording_barang_jumlah, 0)) AS pakan, SUM(IF(barang_kategori='4', recording_barang_jumlah, 0)) AS obat, recording_tanggal AS tanggal FROM t_recording AS a JOIN t_recording_barang AS b ON a.recording_nomor = b.recording_barang_nomor LEFT JOIN t_barang AS c ON b.recording_barang_barang = c.barang_id LEFT JOIN t_kandang AS d ON a.recording_kandang = d.kandang_id WHERE a.recording_hapus = 0 AND a.recording_kandang = '$kandang' AND a.recording_tanggal BETWEEN '$a' AND '$b' GROUP BY a.recording_tanggal");
 
 			if (@$get) {
 				$data['data'] = $get;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2023 at 09:30 AM
+-- Generation Time: Dec 30, 2023 at 05:24 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -298,7 +298,7 @@ INSERT INTO `t_barang` (`barang_id`, `barang_kode`, `barang_kategori`, `barang_s
 (75, 'KB0061', '2', '0', 'AYAM HIDUP', 'ekor', '2023-08-05', 1),
 (76, 'KB0062', '2', '0', 'AYAM MATI', 'ekor', '2023-08-05', 0),
 (77, 'KB0063', '2', '0', 'AYAM AFKIR', 'kg', '2023-08-05', 0),
-(78, 'KB0064', '1', '-124005', 'TELUR MERAH', 'tray', '2023-08-05', 0),
+(78, 'KB0064', '1', '100', 'TELUR MERAH', 'tray', '2023-08-05', 0),
 (79, 'KB0065', '4', '2', 'NOZZLE SOCOREX', 'pcs', '2023-08-14', 0),
 (80, 'KB0066', '4', '2', 'SOCOREX SPARE VALVE', 'pcs', '2023-08-14', 0),
 (81, 'KB0067', '4', '2', 'VALVE', 'pcs', '2023-08-14', 0),
@@ -594,7 +594,7 @@ CREATE TABLE `t_kandang` (
 --
 
 INSERT INTO `t_kandang` (`kandang_id`, `kandang_kode`, `kandang_nama`, `kandang_alamat`, `kandang_luas`, `kandang_keterangan`, `kandang_ayam`, `kandang_tanggal`, `kandang_hapus`) VALUES
-(4, 'KD001', 'Kandang timur', 'Plumpung rejo', '1000', '-', '150', '2023-05-13', 0),
+(4, 'KD001', 'Kandang timur', 'Plumpung rejo', '1000', '-', '140', '2023-05-13', 0),
 (5, 'KD002', 'Kandang barat', 'Plumpung rejo', '1500', '-', '50', '2023-05-13', 1),
 (6, 'KD003', 'IRMAWAN', 'KADEMANGAN', '5', 'BESAR', '554', '2023-08-01', 1),
 (7, 'KD004', 'MAXI', 'MANADO', '5', 'UNTUK LUAS DIISI DENGA JULAH KANDANG', '1789', '2023-08-04', 1),
@@ -881,7 +881,7 @@ CREATE TABLE `t_pakan` (
 
 INSERT INTO `t_pakan` (`pakan_id`, `pakan_kode`, `pakan_nama`, `pakan_satuan`, `pakan_stok`, `pakan_keterangan`, `pakan_tanggal`, `pakan_hapus`) VALUES
 (12, 'PC001', 'Pakan campur 100% HALAL', 'kg', '400', '-', '2023-10-26', 1),
-(13, 'PC002', 'pak eko', 'kg', '1335', '', '2023-11-10', 0),
+(13, 'PC002', 'pak eko', 'kg', '1325', '', '2023-11-10', 0),
 (14, 'PC003', 'pak eko stater', 'kg', '1220', 'formula stater', '2023-11-10', 0),
 (15, 'PC004', 'pak mui', 'kg', '2040', 'tgl 2 november\r\nkandang timur', '2023-11-10', 0),
 (16, 'PC005', 'PAK EKO LAYER', 'kg', '1380', '', '2023-11-11', 0),
@@ -1464,42 +1464,6 @@ CREATE TABLE `t_penjualan` (
   `penjualan_hapus` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `t_penjualan`
---
-
-INSERT INTO `t_penjualan` (`penjualan_id`, `penjualan_user`, `penjualan_kontak`, `penjualan_nomor`, `penjualan_status`, `penjualan_jatuh_tempo`, `penjualan_keterangan`, `penjualan_qty`, `penjualan_ppn`, `penjualan_total`, `penjualan_tanggal`, `penjualan_hapus`) VALUES
-(4, 2, '4', 'PJ-130523-1', 'belum', '2023-05-10', 'penjualan telur', '70', NULL, '740000', '2023-05-13', 1),
-(5, 2, '5', 'PJ-130523-2', 'lunas', '2023-05-13', 'penjualan ayam', '10', NULL, '45000', '2023-05-13', 1),
-(6, 2, '28', 'PJ-070923-3', 'lunas', '2023-08-02', '', '5100', NULL, '134640000', '2023-09-06', 0),
-(7, 2, '28', 'PJ-070923-4', 'lunas', '2023-08-04', '', '5100', NULL, '131070000', '2023-09-06', 0),
-(8, 2, '29', 'PJ-070923-5', 'lunas', '2023-08-08', '', '5040', NULL, '126504000', '2023-09-06', 0),
-(9, 2, '29', 'PJ-070923-6', 'lunas', '2023-08-11', '', '5040', NULL, '123480000', '2023-09-06', 0),
-(10, 2, '30', 'PJ-070923-7', 'lunas', '2023-08-08', '', '5040', NULL, '132552000', '2023-09-06', 0),
-(11, 2, '29', 'PJ-070923-8', 'lunas', '2023-08-13', '', '5040', NULL, '123480000', '2023-09-06', 0),
-(12, 2, '29', 'PJ-070923-9', 'lunas', '2023-08-15', '', '5040', NULL, '121464000', '2023-09-06', 0),
-(13, 2, '29', 'PJ-070923-10', 'lunas', '2023-08-18', '', '3000', NULL, '67800000', '2023-09-06', 0),
-(14, 2, '30', 'PJ-070923-11', 'lunas', '2023-08-19', '', '5040', NULL, '115920000', '2023-09-06', 0),
-(15, 2, '29', 'PJ-070923-12', 'lunas', '2023-08-20', '', '5040', NULL, '113904000', '2023-09-06', 0),
-(16, 2, '31', 'PJ-070923-13', 'lunas', '2023-08-23', '-  KULI  510.000', '5040', NULL, '119448000', '2023-09-06', 0),
-(17, 2, '31', 'PJ-070923-14', 'lunas', '2023-08-24', '', '5040', NULL, '114408000', '2023-09-06', 0),
-(18, 2, '29', 'PJ-070923-15', 'lunas', '2023-08-26', '', '5040', NULL, '108360000', '2023-09-06', 0),
-(19, 2, '30', 'PJ-070923-16', 'lunas', '2023-08-29', '', '5040', NULL, '103320000', '2023-09-06', 0),
-(20, 2, '29', 'PJ-070923-17', 'lunas', '2023-08-30', '', '5040', NULL, '100800000', '2023-09-06', 0),
-(21, 2, '29', 'PJ-070923-18', 'lunas', '2023-08-31', '', '2250', NULL, '48375000', '2023-09-06', 0),
-(22, 2, '29', 'PJ-070923-19', 'lunas', '2023-09-02', '', '2790', NULL, '59985000', '2023-09-06', 0),
-(23, 2, '28', 'PJ-070923-20', 'lunas', '2023-09-04', '', '5100', NULL, '118320000', '2023-09-06', 0),
-(24, 2, '29', 'PJ-070923-21', 'lunas', '2023-09-06', '', '5040', NULL, '109368000', '2023-09-06', 0),
-(25, 2, '30', 'PJ-140923-22', 'lunas', '2023-09-07', '', '5040', NULL, '114408000', '2023-09-13', 0),
-(26, 2, '28', 'PJ-031123-23', 'lunas', '2023-11-03', 'test', '10', 10, '1100000', '2023-11-03', 1),
-(27, 2, '30', 'PJ-061123-24', 'lunas', '2023-11-02', 'sudah bayar', '4845', 0, '104167500', '2023-11-05', 0),
-(28, 2, '30', 'PJ-091123-25', 'lunas', '2023-11-02', 'sudah bayar lunas', '4845', 0, '104167500', '2023-11-08', 1),
-(29, 2, '28', 'PJ-091123-26', 'lunas', '2023-11-05', 'sudah bayar', '5100', 0, '118830000', '2023-11-08', 0),
-(30, 2, '46', 'PJ-091123-27', 'lunas', '2023-11-07', 'SUDAH LUNAS', '5040', 0, '119952000', '2023-11-08', 0),
-(31, 2, '48', 'PJ-141123-28', 'lunas', '2023-11-10', 'SUDAH LUNAS', '5040', 0, '114912000', '2023-11-13', 0),
-(32, 2, '30', 'PJ-141123-29', 'lunas', '2023-11-12', 'SUDAH LUNAS', '5040', 0, '120960000', '2023-11-13', 0),
-(33, 2, '49', 'PJ-141123-30', 'lunas', '2023-11-14', 'LUNAS TF', '5040', 0, '118944000', '2023-11-13', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -1518,44 +1482,6 @@ CREATE TABLE `t_penjualan_barang` (
   `penjualan_barang_subtotal` text NOT NULL,
   `penjualan_barang_tanggal` date NOT NULL DEFAULT curdate()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `t_penjualan_barang`
---
-
-INSERT INTO `t_penjualan_barang` (`penjualan_barang_id`, `penjualan_barang_nomor`, `penjualan_barang_kategori`, `penjualan_barang_barang`, `penjualan_barang_harga`, `penjualan_barang_diskon`, `penjualan_barang_stok`, `penjualan_barang_qty`, `penjualan_barang_subtotal`, `penjualan_barang_tanggal`) VALUES
-(7, 'PJ-130523-1', '1', '8', '7000', '0', '  70', '20', '140000', '2023-05-13'),
-(8, 'PJ-130523-1', '1', '7', '12000', '0', '  150', '50', '600000', '2023-05-13'),
-(9, 'PJ-130523-2', '2', '24', '7000', '0', '  13', '5', '35000', '2023-05-13'),
-(10, 'PJ-130523-2', '2', '11', '2000', '0', '  12', '5', '10000', '2023-05-13'),
-(11, 'PJ-070923-3', '1', '78', '26400', '0', '  25694', '5100', '134640000', '2023-09-06'),
-(12, 'PJ-070923-4', '1', '78', '25700', '0', '  20594', '5100', '131070000', '2023-09-06'),
-(13, 'PJ-070923-5', '1', '78', '25100', '0', '  15494', '5040', '126504000', '2023-09-06'),
-(14, 'PJ-070923-6', '1', '78', '24500', '0', '  10454', '5040', '123480000', '2023-09-06'),
-(15, 'PJ-070923-7', '1', '78', '26300', '0', '  5414', '5040', '132552000', '2023-09-06'),
-(16, 'PJ-070923-8', '1', '78', '24500', '0', '  84494', '5040', '123480000', '2023-09-06'),
-(17, 'PJ-070923-9', '1', '78', '24100', '0', '  79454', '5040', '121464000', '2023-09-06'),
-(18, 'PJ-070923-10', '1', '78', '22600', '0', '  74414', '3000', '67800000', '2023-09-06'),
-(19, 'PJ-070923-11', '1', '78', '23000', '0', '  71414', '5040', '115920000', '2023-09-06'),
-(20, 'PJ-070923-12', '1', '78', '22600', '0', '  66374', '5040', '113904000', '2023-09-06'),
-(21, 'PJ-070923-13', '1', '78', '23700', '0', '  61334', '5040', '119448000', '2023-09-06'),
-(22, 'PJ-070923-14', '1', '78', '22700', '0', '  56294', '5040', '114408000', '2023-09-06'),
-(23, 'PJ-070923-15', '1', '78', '21500', '0', '  51254', '5040', '108360000', '2023-09-06'),
-(24, 'PJ-070923-16', '1', '78', '20500', '0', '  46214', '5040', '103320000', '2023-09-06'),
-(25, 'PJ-070923-17', '1', '78', '20000', '0', '  41174', '5040', '100800000', '2023-09-06'),
-(26, 'PJ-070923-18', '1', '78', '21500', '0', '  36134', '2250', '48375000', '2023-09-06'),
-(27, 'PJ-070923-19', '1', '78', '21500', '0', '  33884', '2790', '59985000', '2023-09-06'),
-(28, 'PJ-070923-20', '1', '78', '23200', '0', '  31094', '5100', '118320000', '2023-09-06'),
-(29, 'PJ-070923-21', '1', '78', '21700', '0', '  25994', '5040', '109368000', '2023-09-06'),
-(30, 'PJ-140923-22', '1', '78', '22700', '0', '  28860', '5040', '114408000', '2023-09-13'),
-(31, 'PJ-031123-23', '1', '78', '100000', '0', '  68973', '10', '1000000', '2023-11-03'),
-(32, 'PJ-061123-24', '1', '78', '21500', '0', '  73479', '4845', '104167500', '2023-11-05'),
-(33, 'PJ-091123-25', '1', '78', '21500', '0', '  71323', '4845', '104167500', '2023-11-08'),
-(34, 'PJ-091123-26', '1', '78', '23300', '0', '  71323', '5100', '118830000', '2023-11-08'),
-(35, 'PJ-091123-27', '1', '78', '23800', '0', '  66223', '5040', '119952000', '2023-11-08'),
-(36, 'PJ-141123-28', '1', '78', '22800', '0', '  61183', '5040', '114912000', '2023-11-13'),
-(37, 'PJ-141123-29', '1', '78', '24000', '0', '  56143', '5040', '120960000', '2023-11-13'),
-(38, 'PJ-141123-30', '1', '78', '23600', '0', '  51103', '5040', '118944000', '2023-11-13');
 
 -- --------------------------------------------------------
 
@@ -1657,6 +1583,13 @@ CREATE TABLE `t_recording` (
   `recording_hapus` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `t_recording`
+--
+
+INSERT INTO `t_recording` (`recording_id`, `recording_nomor`, `recording_user`, `recording_tanggal`, `recording_kandang`, `recording_bobot`, `recording_populasi`, `recording_hapus`) VALUES
+(282, 'RC-301223-1', '2', '2023-12-30', '4', '2', '150', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -1669,9 +1602,23 @@ CREATE TABLE `t_recording_barang` (
   `recording_barang_barang` text DEFAULT '0',
   `recording_barang_stok` text DEFAULT '0',
   `recording_barang_jumlah` text DEFAULT '0',
-  `recording_barang_kategori` set('ayam','telur','pakan','premix') DEFAULT NULL,
+  `recording_barang_kategori` text DEFAULT NULL,
+  `recording_barang_berat` text DEFAULT NULL,
+  `recording_barang_gejala` text DEFAULT NULL,
+  `recording_barang_obat` text DEFAULT NULL,
   `recording_barang_tanggal` date DEFAULT curdate()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `t_recording_barang`
+--
+
+INSERT INTO `t_recording_barang` (`recording_barang_id`, `recording_barang_nomor`, `recording_barang_barang`, `recording_barang_stok`, `recording_barang_jumlah`, `recording_barang_kategori`, `recording_barang_berat`, `recording_barang_gejala`, `recording_barang_obat`, `recording_barang_tanggal`) VALUES
+(511, 'RC-301223-1', '28', '0', '0', 'ayam', '2', 'tipes', '32', '2023-12-30'),
+(512, 'RC-301223-1', '27', '0', '0', 'ayam', '2', 'maag', '31', '2023-12-30'),
+(513, 'RC-301223-1', '76', '0', '10', 'afkir', NULL, NULL, NULL, '2023-12-30'),
+(514, 'RC-301223-1', '78', '0', '100', 'telur', NULL, NULL, NULL, '2023-12-30'),
+(515, 'RC-301223-1', '13', '1335', '10', 'pakan', NULL, NULL, NULL, '2023-12-30');
 
 -- --------------------------------------------------------
 
@@ -2099,13 +2046,13 @@ ALTER TABLE `t_premix_qty`
 -- AUTO_INCREMENT for table `t_recording`
 --
 ALTER TABLE `t_recording`
-  MODIFY `recording_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=276;
+  MODIFY `recording_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=283;
 
 --
 -- AUTO_INCREMENT for table `t_recording_barang`
 --
 ALTER TABLE `t_recording_barang`
-  MODIFY `recording_barang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=475;
+  MODIFY `recording_barang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=516;
 
 --
 -- AUTO_INCREMENT for table `t_user`
