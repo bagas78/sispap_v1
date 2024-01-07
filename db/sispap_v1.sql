@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 30, 2023 at 05:24 AM
+-- Generation Time: Jan 07, 2024 at 08:23 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -249,7 +249,7 @@ INSERT INTO `t_barang` (`barang_id`, `barang_kode`, `barang_kategori`, `barang_s
 (19, 'KB0013', '4', '0', 'Masamix Bro Premix', 'pcs', '2023-02-27', 1),
 (24, 'KB0014', '2', '0', 'Ayam Afkir', 'ekor', '2023-02-28', 1),
 (27, 'KB0014', '5', '0', 'Ayam Petelur Sussex', 'ekor', '2023-05-03', 0),
-(28, 'KB0015', '5', '51556', 'Ayam Petelur Coklat/Hibrida', 'ekor', '2023-05-03', 0),
+(28, 'KB0015', '5', '51456', 'Ayam Petelur Coklat/Hibrida', 'ekor', '2023-05-03', 0),
 (29, 'KB0016', '5', '0', 'Ayam Petelur Putih', 'ekor', '2023-05-03', 0),
 (31, 'KB0017', '4', '500', 'BETTERZYM', 'pcs', '2023-07-27', 0),
 (32, 'KB0018', '4', '29', 'MEDIVAC CORYZA', 'pcs', '2023-07-27', 0),
@@ -644,7 +644,7 @@ INSERT INTO `t_kandang` (`kandang_id`, `kandang_kode`, `kandang_nama`, `kandang_
 (51, 'KD0048', 'pak tukul C', 'PLUMPUNGREJO', '000', 'BAGIAN C', '2230', '2023-11-05', 0),
 (52, 'KD0049', 'pak tukul D', 'PLUMPUNGREJO', '000', 'BAGIAN D', '0', '2023-11-05', 0),
 (53, 'KD0050', 'pak tukul E', 'plumpungrejo', '000', 'bagian E', '1336', '2023-11-05', 0),
-(54, 'KD0051', 'pak tukul F', 'PLUMPUNGREJO', '000', 'BAGIAN F', '1428', '2023-11-05', 0);
+(54, 'KD0051', 'pak tukul F', 'PLUMPUNGREJO', '000', 'BAGIAN F', '1528', '2023-11-05', 0);
 
 -- --------------------------------------------------------
 
@@ -660,7 +660,6 @@ CREATE TABLE `t_kandang_log` (
   `kandang_log_stok` text DEFAULT NULL,
   `kandang_log_jumlah` text DEFAULT NULL,
   `kandang_log_umur` text DEFAULT NULL,
-  `kandang_log_vaksin` text DEFAULT NULL,
   `kandang_log_tanggal` date DEFAULT curdate(),
   `kandang_log_hapus` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -669,60 +668,61 @@ CREATE TABLE `t_kandang_log` (
 -- Dumping data for table `t_kandang_log`
 --
 
-INSERT INTO `t_kandang_log` (`kandang_log_id`, `kandang_log_user`, `kandang_log_kandang`, `kandang_log_barang`, `kandang_log_stok`, `kandang_log_jumlah`, `kandang_log_umur`, `kandang_log_vaksin`, `kandang_log_tanggal`, `kandang_log_hapus`) VALUES
-(6, '2', '5', '27', '100', '50', NULL, NULL, '2023-05-13', 0),
-(7, '2', '4', '28', '100', '50', NULL, NULL, '2023-05-13', 0),
-(8, '2', '6', '27', '50', '50', NULL, NULL, '2023-08-03', 0),
-(10, '2', '13', '28', '0', '14268', NULL, NULL, '2023-08-04', 0),
-(11, '2', '7', '28', '0', '742', NULL, NULL, '2023-08-05', 0),
-(12, '2', '7', '28', '-742', '343', NULL, NULL, '2023-08-05', 0),
-(13, '2', '7', '28', '-1085', '704', NULL, NULL, '2023-08-05', 0),
-(14, '2', '6', '28', '-1789', '504', NULL, NULL, '2023-08-05', 0),
-(15, '2', '8', '28', '-2293', '136', NULL, NULL, '2023-08-05', 0),
-(16, '2', '9', '28', '-2429', '215', NULL, NULL, '2023-08-05', 0),
-(17, '2', '10', '28', '-2644', '181', NULL, NULL, '2023-08-05', 0),
-(18, '2', '11', '28', '-2825', '274', NULL, NULL, '2023-08-05', 0),
-(19, '2', '14', '28', '-3099', '348', NULL, NULL, '2023-08-05', 1),
-(20, '2', '16', '28', '10000', '7304', NULL, NULL, '2023-08-07', 0),
-(21, '2', '17', '28', '52696', '50000', NULL, NULL, '2023-08-07', 0),
-(22, '2', '18', '28', '30000', '12000', NULL, NULL, '2023-10-19', 0),
-(23, '2', '19', '28', '18000', '4000', NULL, NULL, '2023-10-19', 0),
-(24, '2', '20', '28', '14000', '4757', NULL, NULL, '2023-11-05', 0),
-(25, '2', '21', '28', '13243', '5389', NULL, NULL, '2023-11-05', 0),
-(26, '2', '22', '28', '7854', '3816', NULL, NULL, '2023-11-05', 0),
-(27, '2', '23', '28', '114038', '5608', NULL, NULL, '2023-11-05', 0),
-(28, '2', '24', '28', '108430', '5608', NULL, NULL, '2023-11-05', 0),
-(29, '2', '25', '28', '88430', '1284', NULL, NULL, '2023-11-05', 0),
-(30, '2', '26', '28', '92754', '1120', NULL, NULL, '2023-11-05', 0),
-(31, '2', '27', '28', '91634', '3204', NULL, NULL, '2023-11-05', 0),
-(32, '2', '28', '28', '88430', '2590', NULL, NULL, '2023-11-05', 0),
-(33, '2', '29', '28', '85840', '920', NULL, NULL, '2023-11-05', 0),
-(34, '2', '30', '28', '84920', '896', NULL, NULL, '2023-11-05', 0),
-(35, '2', '31', '28', '84024', '1840', NULL, NULL, '2023-11-05', 0),
-(36, '2', '32', '28', '82184', '1840', NULL, NULL, '2023-11-05', 0),
-(37, '2', '33', '28', '82184', '1360', NULL, NULL, '2023-11-05', 0),
-(38, '2', '34', '28', '80824', '1000', NULL, NULL, '2023-11-05', 0),
-(39, '2', '35', '28', '79824', '1792', NULL, NULL, '2023-11-05', 0),
-(40, '2', '36', '28', '78032', '480', NULL, NULL, '2023-11-05', 0),
-(41, '2', '37', '28', '77552', '1000', NULL, NULL, '2023-11-05', 0),
-(42, '2', '38', '28', '76552', '1816', NULL, NULL, '2023-11-05', 0),
-(43, '2', '39', '28', '74736', '754', NULL, NULL, '2023-11-05', 0),
-(44, '2', '40', '28', '73982', '840', NULL, NULL, '2023-11-05', 0),
-(45, '2', '41', '28', '73142', '560', NULL, NULL, '2023-11-05', 0),
-(46, '2', '42', '28', '72582', '3240', NULL, NULL, '2023-11-05', 0),
-(47, '2', '43', '28', '69342', '820', NULL, NULL, '2023-11-05', 0),
-(48, '2', '44', '28', '68522', '972', NULL, NULL, '2023-11-05', 0),
-(49, '2', '45', '28', '67550', '1904', NULL, NULL, '2023-11-05', 0),
-(50, '2', '46', '28', '65646', '1896', NULL, NULL, '2023-11-05', 0),
-(51, '2', '47', '28', '63750', '1500', NULL, NULL, '2023-11-05', 0),
-(52, '2', '48', '28', '62250', '1500', NULL, NULL, '2023-11-05', 0),
-(53, '2', '49', '28', '60750', '2210', NULL, NULL, '2023-11-05', 0),
-(54, '2', '50', '28', '58540', '1840', NULL, NULL, '2023-11-05', 0),
-(55, '2', '51', '28', '56700', '2230', NULL, NULL, '2023-11-05', 0),
-(56, '2', '53', '28', '54470', '1336', NULL, NULL, '2023-11-05', 0),
-(57, '2', '54', '28', '53134', '1328', NULL, NULL, '2023-11-05', 0),
-(58, '2', '54', '28', '51806', '100', '20', '1', '2023-12-22', 0),
-(59, '2', '4', '28', '51806', '100', '20', '2', '2023-12-25', 0);
+INSERT INTO `t_kandang_log` (`kandang_log_id`, `kandang_log_user`, `kandang_log_kandang`, `kandang_log_barang`, `kandang_log_stok`, `kandang_log_jumlah`, `kandang_log_umur`, `kandang_log_tanggal`, `kandang_log_hapus`) VALUES
+(6, '2', '5', '27', '100', '50', NULL, '2023-05-13', 0),
+(7, '2', '4', '28', '100', '50', NULL, '2023-05-13', 0),
+(8, '2', '6', '27', '50', '50', NULL, '2023-08-03', 0),
+(10, '2', '13', '28', '0', '14268', NULL, '2023-08-04', 0),
+(11, '2', '7', '28', '0', '742', NULL, '2023-08-05', 0),
+(12, '2', '7', '28', '-742', '343', NULL, '2023-08-05', 0),
+(13, '2', '7', '28', '-1085', '704', NULL, '2023-08-05', 0),
+(14, '2', '6', '28', '-1789', '504', NULL, '2023-08-05', 0),
+(15, '2', '8', '28', '-2293', '136', NULL, '2023-08-05', 0),
+(16, '2', '9', '28', '-2429', '215', NULL, '2023-08-05', 0),
+(17, '2', '10', '28', '-2644', '181', NULL, '2023-08-05', 0),
+(18, '2', '11', '28', '-2825', '274', NULL, '2023-08-05', 0),
+(19, '2', '14', '28', '-3099', '348', NULL, '2023-08-05', 1),
+(20, '2', '16', '28', '10000', '7304', NULL, '2023-08-07', 0),
+(21, '2', '17', '28', '52696', '50000', NULL, '2023-08-07', 0),
+(22, '2', '18', '28', '30000', '12000', NULL, '2023-10-19', 0),
+(23, '2', '19', '28', '18000', '4000', NULL, '2023-10-19', 0),
+(24, '2', '20', '28', '14000', '4757', NULL, '2023-11-05', 0),
+(25, '2', '21', '28', '13243', '5389', NULL, '2023-11-05', 0),
+(26, '2', '22', '28', '7854', '3816', NULL, '2023-11-05', 0),
+(27, '2', '23', '28', '114038', '5608', NULL, '2023-11-05', 0),
+(28, '2', '24', '28', '108430', '5608', NULL, '2023-11-05', 0),
+(29, '2', '25', '28', '88430', '1284', NULL, '2023-11-05', 0),
+(30, '2', '26', '28', '92754', '1120', NULL, '2023-11-05', 0),
+(31, '2', '27', '28', '91634', '3204', NULL, '2023-11-05', 0),
+(32, '2', '28', '28', '88430', '2590', NULL, '2023-11-05', 0),
+(33, '2', '29', '28', '85840', '920', NULL, '2023-11-05', 0),
+(34, '2', '30', '28', '84920', '896', NULL, '2023-11-05', 0),
+(35, '2', '31', '28', '84024', '1840', NULL, '2023-11-05', 0),
+(36, '2', '32', '28', '82184', '1840', NULL, '2023-11-05', 0),
+(37, '2', '33', '28', '82184', '1360', NULL, '2023-11-05', 0),
+(38, '2', '34', '28', '80824', '1000', NULL, '2023-11-05', 0),
+(39, '2', '35', '28', '79824', '1792', NULL, '2023-11-05', 0),
+(40, '2', '36', '28', '78032', '480', NULL, '2023-11-05', 0),
+(41, '2', '37', '28', '77552', '1000', NULL, '2023-11-05', 0),
+(42, '2', '38', '28', '76552', '1816', NULL, '2023-11-05', 0),
+(43, '2', '39', '28', '74736', '754', NULL, '2023-11-05', 0),
+(44, '2', '40', '28', '73982', '840', NULL, '2023-11-05', 0),
+(45, '2', '41', '28', '73142', '560', NULL, '2023-11-05', 0),
+(46, '2', '42', '28', '72582', '3240', NULL, '2023-11-05', 0),
+(47, '2', '43', '28', '69342', '820', NULL, '2023-11-05', 0),
+(48, '2', '44', '28', '68522', '972', NULL, '2023-11-05', 0),
+(49, '2', '45', '28', '67550', '1904', NULL, '2023-11-05', 0),
+(50, '2', '46', '28', '65646', '1896', NULL, '2023-11-05', 0),
+(51, '2', '47', '28', '63750', '1500', NULL, '2023-11-05', 0),
+(52, '2', '48', '28', '62250', '1500', NULL, '2023-11-05', 0),
+(53, '2', '49', '28', '60750', '2210', NULL, '2023-11-05', 0),
+(54, '2', '50', '28', '58540', '1840', NULL, '2023-11-05', 0),
+(55, '2', '51', '28', '56700', '2230', NULL, '2023-11-05', 0),
+(56, '2', '53', '28', '54470', '1336', NULL, '2023-11-05', 0),
+(57, '2', '54', '28', '53134', '1328', NULL, '2023-11-05', 0),
+(58, '2', '54', '28', '51806', '100', '20', '2023-12-22', 0),
+(59, '2', '4', '28', '51806', '100', '20', '2023-12-25', 0),
+(60, '2', '54', '28', '51556', '100', '10', '2024-01-06', 0);
 
 -- --------------------------------------------------------
 
@@ -1652,10 +1652,9 @@ INSERT INTO `t_user` (`user_id`, `user_nama`, `user_email`, `user_password`, `us
 
 CREATE TABLE `t_vaksin` (
   `vaksin_id` int(11) NOT NULL,
-  `vaksin_log` text DEFAULT NULL,
-  `vaksin_vaksin` text DEFAULT NULL,
-  `vaksin_ayam` text DEFAULT NULL,
-  `vaksin_kandang` text DEFAULT NULL,
+  `vaksin_jadwal` text DEFAULT NULL,
+  `vaksin_kandang` int(11) NOT NULL DEFAULT 0,
+  `vaksin_ayam` int(11) NOT NULL DEFAULT 0,
   `vaksin_status` int(11) DEFAULT 0,
   `vaksin_tanggal` date DEFAULT curdate(),
   `vaksin_hapus` int(11) DEFAULT 0
@@ -1665,8 +1664,9 @@ CREATE TABLE `t_vaksin` (
 -- Dumping data for table `t_vaksin`
 --
 
-INSERT INTO `t_vaksin` (`vaksin_id`, `vaksin_log`, `vaksin_vaksin`, `vaksin_ayam`, `vaksin_kandang`, `vaksin_status`, `vaksin_tanggal`, `vaksin_hapus`) VALUES
-(10, '58', '1', '28', '54', 0, '2023-12-29', 0);
+INSERT INTO `t_vaksin` (`vaksin_id`, `vaksin_jadwal`, `vaksin_kandang`, `vaksin_ayam`, `vaksin_status`, `vaksin_tanggal`, `vaksin_hapus`) VALUES
+(12, '3', 4, 28, 1, '2024-01-01', 0),
+(16, '3', 4, 28, 0, '2024-01-07', 0);
 
 -- --------------------------------------------------------
 
@@ -1677,7 +1677,8 @@ INSERT INTO `t_vaksin` (`vaksin_id`, `vaksin_log`, `vaksin_vaksin`, `vaksin_ayam
 CREATE TABLE `t_vaksin_jadwal` (
   `vaksin_jadwal_id` int(11) NOT NULL,
   `vaksin_jadwal_kode` text DEFAULT NULL,
-  `vaksin_jadwal_nama` text DEFAULT NULL,
+  `vaksin_jadwal_kandang` text DEFAULT NULL,
+  `vaksin_jadwal_ayam` text DEFAULT NULL,
   `vaksin_jadwal_hari` text DEFAULT NULL,
   `vaksin_jadwal_keterangan` text DEFAULT NULL,
   `vaksin_jadwal_tanggal` date DEFAULT curdate(),
@@ -1688,9 +1689,8 @@ CREATE TABLE `t_vaksin_jadwal` (
 -- Dumping data for table `t_vaksin_jadwal`
 --
 
-INSERT INTO `t_vaksin_jadwal` (`vaksin_jadwal_id`, `vaksin_jadwal_kode`, `vaksin_jadwal_nama`, `vaksin_jadwal_hari`, `vaksin_jadwal_keterangan`, `vaksin_jadwal_tanggal`, `vaksin_jadwal_hapus`) VALUES
-(1, 'VK001', 'vaksin seminggu sekali', '7', '-', '2023-12-23', 0),
-(2, 'VK002', 'vaksin sepuluh hari sekali', '10', '-', '2023-12-23', 0);
+INSERT INTO `t_vaksin_jadwal` (`vaksin_jadwal_id`, `vaksin_jadwal_kode`, `vaksin_jadwal_kandang`, `vaksin_jadwal_ayam`, `vaksin_jadwal_hari`, `vaksin_jadwal_keterangan`, `vaksin_jadwal_tanggal`, `vaksin_jadwal_hapus`) VALUES
+(3, 'VK001', '4', '28', '6', 'Vaksin 7 Hari Sekali', '2024-01-01', 0);
 
 --
 -- Indexes for dumped tables
@@ -1938,7 +1938,7 @@ ALTER TABLE `t_kandang`
 -- AUTO_INCREMENT for table `t_kandang_log`
 --
 ALTER TABLE `t_kandang_log`
-  MODIFY `kandang_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `kandang_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `t_karyawan`
@@ -2064,13 +2064,13 @@ ALTER TABLE `t_user`
 -- AUTO_INCREMENT for table `t_vaksin`
 --
 ALTER TABLE `t_vaksin`
-  MODIFY `vaksin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `vaksin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `t_vaksin_jadwal`
 --
 ALTER TABLE `t_vaksin_jadwal`
-  MODIFY `vaksin_jadwal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `vaksin_jadwal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

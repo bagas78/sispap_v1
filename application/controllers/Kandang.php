@@ -11,9 +11,6 @@ class Kandang extends CI_Controller{
 		//DOC
 		$data['doc_data'] = $this->query_builder->view("SELECT * FROM t_barang WHERE barang_kategori = 5 AND barang_hapus = 0");
 
-		//VAKSIN
-		$data['vaksin_data'] = $this->query_builder->view("SELECT * FROM t_vaksin_jadwal WHERE vaksin_jadwal_hapus = 0");
-
 	    $this->load->view('v_template_admin/admin_header',$data);
 	    $this->load->view('kandang/index');
 	    $this->load->view('v_template_admin/admin_footer');
@@ -57,7 +54,6 @@ class Kandang extends CI_Controller{
 						'kandang_log_stok' => $stok,
 						'kandang_log_jumlah' => $jumlah,
 						'kandang_log_umur' => $umur,
-						'kandang_log_vaksin' => $vaksin,
 					);
 
 		$db = $this->query_builder->add('t_kandang_log', $set);
@@ -79,7 +75,7 @@ class Kandang extends CI_Controller{
 		$data['title'] = 'Histori Tambah Ayam';
 
 		//data
-		$data['data'] = $this->query_builder->view("SELECT a.kandang_log_id as id, b.barang_nama AS barang, a.kandang_log_jumlah AS jumlah, a.kandang_log_tanggal AS tanggal, a.kandang_log_umur as umur, c.vaksin_jadwal_hari as vaksin FROM t_kandang_log AS a JOIN t_barang AS b ON a.kandang_log_barang = b.barang_id LEFT JOIN t_vaksin_jadwal as c ON a.kandang_log_vaksin = c.vaksin_jadwal_id WHERE a.kandang_log_hapus = 0 AND a.kandang_log_kandang = '$id'");
+		$data['data'] = $this->query_builder->view("SELECT a.kandang_log_id as id, b.barang_nama AS barang, a.kandang_log_jumlah AS jumlah, a.kandang_log_tanggal AS tanggal, a.kandang_log_umur as umur FROM t_kandang_log AS a JOIN t_barang AS b ON a.kandang_log_barang = b.barang_id WHERE a.kandang_log_hapus = 0 AND a.kandang_log_kandang = '$id'");
 
 	    $this->load->view('v_template_admin/admin_header',$data);
 	    $this->load->view('kandang/histori');

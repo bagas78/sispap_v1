@@ -73,15 +73,6 @@
                 <label>Umur Ayam ( Hari )</label>
                 <input id="umur" required type="number" name="umur" class="form-control">
               </div>
-              <div class="form-group">
-                <label>Vaksinasi</label>
-                <select id="vaksin" class="form-control" required name="vaksin">
-                  <option value="" hidden>-- Pilih --</option>
-                  <?php foreach ($vaksin_data as $value): ?>
-                    <option value="<?=$value['vaksin_jadwal_id']?>"><?=$value['vaksin_jadwal_nama']?></option>
-                  <?php endforeach ?>
-                </select>
-              </div>
 
               <!--hidden -->
               <input id="id" type="hidden" name="id" value="">

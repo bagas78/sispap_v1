@@ -28,10 +28,23 @@
                   <input readonly="" type="text" name="kode" class="kode form-control" required value="<?=@$kode?>">
                 </div>
                 <div class="form-group">
-                  <label>Nama</label>
-                  <input type="text" name="nama" class="nama form-control" required>
+                  <label>Kandang</label>
+                  <select class="form-control kandang" name="kandang" required>
+                    <option value="" hidden>-- Pilih --</option>
+                    <?php foreach ($kandang_data as $v): ?>
+                      <option value="<?=$v['kandang_id']?>"><?=$v['kandang_nama']?></option>
+                    <?php endforeach ?>
+                  </select>
                 </div>
-
+                <div class="form-group">
+                  <label>Ayam</label>
+                  <select class="form-control ayam" name="ayam" required>
+                    <option value="" hidden>-- Pilih --</option>
+                    <?php foreach ($ayam_data as $v): ?>
+                      <option value="<?=$v['barang_id']?>"><?=$v['barang_nama']?></option>
+                    <?php endforeach ?>
+                  </select>
+                </div>
               </div>
 
               <div class="col-lg-6">

@@ -17,7 +17,7 @@
               <i class="fa fa-times"></i></button>
           </div>
         </div>
-        <div class="box-body">
+        <div class="box-body"> 
 
           <span style="background: darkred;padding: 1%;color: white;"><i class="fa fa-info-circle"></i> Menghapus histori sama dengan menghapus stok ayam pada kandang</span><div class="clearfix"></div><br/>
           
@@ -26,8 +26,8 @@
             <tr>
               <th>Ayam</th>
               <th>Jumlah</th>
-              <th>Umur ( Hari )</th>
-              <th>Jadwal Vaksin</th>
+              <th>Umur Saat Di Tambah</th>
+              <th>Umur Saat Ini</th>
               <th>Tanggal Di Tambahkan</th>
               <th width="1">Action</th>
             </tr>
@@ -39,8 +39,36 @@
                 <tr>
                   <td><?=$v['barang']?></td>
                   <td><?=$v['jumlah']?></td>
-                  <td><?=($v['umur'] == '')? '-' : $v['umur'];?></td>
-                  <td><?=($v['vaksin'] == '')? '-' : $v['vaksin'].' Hari Sekali';?></td>
+                  <td><?=($v['umur'] == '')? '-' : $v['umur'].' Hari';?></td>
+
+                  <?php
+
+                    $d = $v['tanggal'];
+                    $u = $v['umur'];
+
+                    $date = new DateTime($d); 
+                    @$date->modify("-".$u." day");
+                    $today = new DateTime('today');
+                    
+                    $y = $today->diff(@$date)->y;
+                    $m = $today->diff(@$date)->m;
+                    $d = $today->diff(@$date)->d;
+
+                    $arr = array();
+                    switch (true) {
+                      case $y > 0:
+                        $arr[] = $y.' tahun';
+                      case $m > 0:
+                        $arr[] = $m.' bulan';
+                      case $d > 0:
+                        $arr[] = $d.' hari'; 
+                    }
+
+                    $umur = implode(' ',$arr);
+
+                ?>
+
+                  <td><?=$umur?></td>
                   <td><?=date_format(date_create($v['tanggal']), 'd/m/Y')?></td>
                   <td>
                     <button onclick="del('<?=base_url('kandang/histori_delete/'.$v['id'].'/'.$this->uri->segment(3))?>')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>

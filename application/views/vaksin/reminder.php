@@ -52,7 +52,7 @@
             "order"       :[],  
             
             "ajax": {
-                "url": "<?= base_url('vaksin/ayam_get_data'); ?>",
+                "url": "<?= base_url('vaksin/reminder_get_data'); ?>",
                 "type": "GET"
             },
             "columns": [                               
@@ -96,7 +96,7 @@ function proses(id) {
   .then((willDelete) => {
     if (willDelete) {
 
-      $(location).attr('href','<?=base_url('vaksin/ayam_proses/')?>'+id);
+      $(location).attr('href','<?=base_url('vaksin/reminder_proses/')?>'+id);
       
     }
   });

@@ -23,8 +23,9 @@
             <thead>
             <tr>
               <th>Kode</th>
-              <th>Nama</th>
-              <th>Pelaksanaan</th>
+              <th>Kandang</th>
+              <th>Ayam</th>
+              <th>Vaksin</th>
               <th>Keterangan</th>
               <th width="30">Action</th>
             </tr>
@@ -59,7 +60,8 @@
             },
             "columns": [                               
                         { "data": "vaksin_jadwal_kode"},
-                        { "data": "vaksin_jadwal_nama"},
+                        { "data": "kandang_nama"},
+                        { "data": "barang_nama"},
                         { "data": "vaksin_jadwal_hari",
                         "render": 
                         function( data ) {

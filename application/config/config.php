@@ -504,6 +504,8 @@ $config['time_reference'] = 'local';
 */
 $config['rewrite_short_tags'] = FALSE;
 
+$config['sess_save_path'] = sys_get_temp_dir();
+
 /*
 |--------------------------------------------------------------------------
 | Reverse Proxy IPs

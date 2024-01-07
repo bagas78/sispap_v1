@@ -253,7 +253,7 @@ function notif(){
         
         if (parseInt(data) > 0) {
             $('.vaksin_notif').css('display', '');
-            $('.ayam_notif').text(data).css('display', '');
+            $('.reminder_notif').text(data).css('display', '');
         }
 
     });
@@ -280,6 +280,9 @@ function notif(){
         if (1 != '<?=@$akses['level_obat']?>') { $('.obat_sub').remove(); }
 
     }
+
+    //reminder vaksin
+    $.get('<?=base_url('vaksin/add_reminder')?>', function(data) {});
 
     //demo
     // var durl = '<?=base_url('demo/url/') ?>'+document.referrer.replaceAll('<?=base_url()?>','');

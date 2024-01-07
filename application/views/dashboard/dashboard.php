@@ -14,7 +14,7 @@
     background: black;
     padding: 0.5%;
     color: white; 
-  }
+  } 
 </style>
  
     <!-- Main content --> 
@@ -106,7 +106,6 @@
               <tr>
                 <th>Kandang</th>
                 <th>Ayam</th>
-                <th>Umur</th>
                 <th width="120">Tanggal</th>
               </tr>
             </thead>
@@ -114,37 +113,9 @@
               <?php $no = 1; ?>
               <?php foreach ($vaksin_data as $vaksin): ?>
 
-                <?php
-
-                    $d = $vaksin['kandang_log_tanggal'];
-                    $u = $vaksin['kandang_log_umur'];
-
-                    $date = new DateTime($d); 
-                    $date->modify("-".$u." day");
-                    $today = new DateTime('today');
-                    
-                    $y = $today->diff($date)->y;
-                    $m = $today->diff($date)->m;
-                    $d = $today->diff($date)->d;
-
-                    $arr = array();
-                    switch (true) {
-                      case $y > 0:
-                        $arr[] = $y.' tahun';
-                      case $m > 0:
-                        $arr[] = $m.' bulan';
-                      case $d > 0:
-                        $arr[] = $d.' hari'; 
-                    }
-
-                    $umur = implode(' ',$arr);
-
-                ?>
-
                 <tr>
                   <td><?=@$vaksin['kandang_nama']?></td>
                   <td><?=@$vaksin['barang_nama']?></td>
-                  <td><?=@$umur?></td>
                   <td class="bg-red"><?=date_format(date_create(@$vaksin['vaksin_tanggal']), 'd/m/Y');?></td>
                 </tr>
               <?php $no++; ?>

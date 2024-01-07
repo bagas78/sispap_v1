@@ -174,8 +174,8 @@
             <ul class="treeview-menu">
               <li><a href="<?=base_url('vaksin/jadwal')?>"><i class="fa fa-circle-o"></i> Jadwal</a></li>
               <li>
-                <a href="<?=base_url('vaksin/ayam')?>"><i class="fa fa-circle-o"></i> Ayam
-                  <small style="display: none;" class="label pull-right bg-primary ayam_notif"></small>
+                <a href="<?=base_url('vaksin/reminder')?>"><i class="fa fa-circle-o"></i> Reminder
+                  <small style="display: none;" class="label pull-right bg-primary reminder_notif"></small>
                 </a>
               </li>
             </ul>

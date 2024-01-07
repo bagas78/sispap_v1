@@ -18,7 +18,7 @@ class M_vaksin_jadwal extends CI_Model {
 	{
 		parent::__construct();
 		$this->load->database();
-	}
+	} 
 
 	private function _get_datatables_query()
 	{
@@ -64,6 +64,8 @@ class M_vaksin_jadwal extends CI_Model {
 		$this->_get_datatables_query();
 		if($_GET['length'] != -1)
 		$this->db->where($where);
+		$this->db->join('t_kandang', 't_kandang.kandang_id = t_vaksin_jadwal.vaksin_jadwal_kandang');
+		$this->db->join('t_barang', 't_barang.barang_id = t_vaksin_jadwal.vaksin_jadwal_ayam');
 		$this->db->limit($_GET['length'], $_GET['start']);
 		$query = $this->db->get();
 		return $query->result();
@@ -73,6 +75,8 @@ class M_vaksin_jadwal extends CI_Model {
 	{
 		$this->_get_datatables_query();
 		$this->db->where($where);
+		$this->db->join('t_kandang', 't_kandang.kandang_id = t_vaksin_jadwal.vaksin_jadwal_kandang');
+		$this->db->join('t_barang', 't_barang.barang_id = t_vaksin_jadwal.vaksin_jadwal_ayam');
 		$query = $this->db->get();
 		return $query->num_rows();
 	}
